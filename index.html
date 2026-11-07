@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kashmir Dairy – Pure Cow Milk, Muzaffarabad</title>
+<meta name="description" content="Fresh, pure cow milk from our family farm in Muzaffarabad. No water, no chemicals. Home delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ EASY-TO-CHANGE COLOURS ============ */
+  :root {
+    --green: #2f6b3a;
+    --green-dark: #214d29;
+    --cream: #fdf8ee;
+    --white: #ffffff;
+    --text: #2b2b2b;
+    --muted: #6b6b6b;
+    --whatsapp: #25d366;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  body.ur {
+    font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+    line-height: 2.2;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Top bar ---------- */
+  header {
+    background: var(--white);
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.2rem; color: var(--green-dark); text-decoration: none; }
+  .logo svg { width: 36px; height: 36px; }
+  .lang-btn {
+    border: 2px solid var(--green); background: none; color: var(--green);
+    padding: 6px 16px; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .lang-btn:hover { background: var(--green); color: var(--white); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 48px 0 56px; }
+  .hero .wrap { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 760px) { .hero .wrap { grid-template-columns: 1.1fr 1fr; } }
+  .badge {
+    display: inline-block; background: #e3efe0; color: var(--green-dark);
+    padding: 4px 14px; border-radius: 999px; font-size: .9rem; font-weight: 600; margin-bottom: 14px;
+  }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; color: var(--green-dark); margin-bottom: 14px; }
+  body.ur h1 { line-height: 1.9; }
+  .hero p { font-size: 1.1rem; color: var(--muted); margin-bottom: 24px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 999px; font-weight: 600; text-decoration: none;
+    font-size: 1rem; border: none; cursor: pointer; font-family: inherit;
+  }
+  .btn-wa { background: var(--whatsapp); color: #fff; }
+  .btn-wa:hover { filter: brightness(.95); }
+  .btn-call { background: var(--white); color: var(--green-dark); border: 2px solid var(--green); }
+  .hero-art { width: 100%; max-width: 420px; margin: 0 auto; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 56px 0; }
+  section.alt { background: var(--white); }
+  h2 { font-size: clamp(1.6rem, 4.5vw, 2.2rem); color: var(--green-dark); text-align: center; margin-bottom: 10px; }
+  body.ur h2 { line-height: 1.9; }
+  .sub { text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 36px; }
+
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .card {
+    background: var(--cream); border-radius: var(--radius); padding: 26px 22px; text-align: center;
+  }
+  section:not(.alt) .card { background: var(--white); box-shadow: 0 4px 18px rgba(0,0,0,.05); }
+  .card .icon { font-size: 2.4rem; margin-bottom: 8px; }
+  .card h3 { color: var(--green-dark); margin-bottom: 6px; font-size: 1.15rem; }
+  .card p { color: var(--muted); font-size: .95rem; }
+
+  /* ---------- Price box ---------- */
+  .price-box {
+    max-width: 460px; margin: 0 auto; background: var(--white); border-radius: var(--radius);
+    padding: 32px; text-align: center; box-shadow: 0 6px 24px rgba(0,0,0,.07); border-top: 6px solid var(--green);
+  }
+  .price-box .amount { font-size: 2.6rem; font-weight: 700; color: var(--green-dark); }
+  .price-box .per { color: var(--muted); }
+  .price-box ul { list-style: none; margin: 20px 0 0; text-align: start; }
+  .price-box li { padding: 6px 0; }
+  .price-box li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+
+  /* ---------- Order form ---------- */
+  form { max-width: 520px; margin: 0 auto; display: grid; gap: 16px; }
+  label { font-weight: 600; display: block; margin-bottom: 6px; }
+  input, select, textarea {
+    width: 100%; padding: 12px 14px; border: 2px solid #ddd; border-radius: 12px;
+    font: inherit; font-size: 1rem; background: var(--white);
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); }
+  form .btn { justify-content: center; width: 100%; font-size: 1.1rem; }
+  .note { text-align: center; color: var(--muted); font-size: .9rem; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--green-dark); color: #e6efe4; padding: 40px 0 24px; text-align: center; }
+  footer h3 { color: #fff; margin-bottom: 8px; }
+  footer a { color: #fff; }
+  footer .small { margin-top: 20px; font-size: .85rem; opacity: .7; }
+
+  /* ---------- Floating WhatsApp button (phones) ---------- */
+  .float-wa {
+    position: fixed; bottom: 18px; inset-inline-end: 18px; z-index: 20;
+    width: 58px; height: 58px; border-radius: 50%; background: var(--whatsapp);
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  }
+  .float-wa svg { width: 30px; height: 30px; fill: #fff; }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header>
+  <div class="wrap">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#2f6b3a"/><path d="M14 12h12l-1.5 4v13a3 3 0 0 1-3 3h-3a3 3 0 0 1-3-3V16z" fill="#fff"/><rect x="15.5" y="20" width="9" height="6" rx="1" fill="#cfe3c9"/></svg>
+      <span data-t="farmName">Kashmir Dairy</span>
+    </a>
+    <button class="lang-btn" id="langBtn" type="button">اردو</button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge" data-t="badge">🏡 Family farm · Muzaffarabad</span>
+      <h1 data-t="heroTitle">Pure cow milk, delivered to your door</h1>
+      <p data-t="heroText">Fresh milk from our own 5 cows. No water. No chemicals. Just pure, natural milk — the way it should be.</p>
+      <div class="btns">
+        <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener">
+          <span>💬</span><span data-t="btnWa">Order on WhatsApp</span>
+        </a>
+        <a class="btn btn-call js-call" href="#">
+          <span>📞</span><span data-t="btnCall">Call us</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Simple drawing of a cow on a hill (replace with a real photo later) -->
+    <svg class="hero-art" viewBox="0 0 400 300" role="img" aria-label="Cow on a green hill">
+      <circle cx="320" cy="60" r="34" fill="#ffd46b"/>
+      <path d="M0 150 L70 80 L130 140 L200 60 L290 150 Z" fill="#c9dcc4"/>
+      <path d="M150 150 L240 90 L330 150 L400 110 L400 150 Z" fill="#b5cfb0"/>
+      <path d="M0 160 Q200 120 400 160 V300 H0 Z" fill="#7fb36f"/>
+      <path d="M0 200 Q200 170 400 205 V300 H0 Z" fill="#5f9a52"/>
+      <!-- cow -->
+      <g transform="translate(110 150)">
+        <rect x="30" y="40" width="10" height="45" rx="4" fill="#3a3a3a"/>
+        <rect x="55" y="40" width="10" height="45" rx="4" fill="#3a3a3a"/>
+        <rect x="115" y="40" width="10" height="45" rx="4" fill="#3a3a3a"/>
+        <rect x="140" y="40" width="10" height="45" rx="4" fill="#3a3a3a"/>
+        <rect x="20" y="0" width="140" height="62" rx="28" fill="#fff" stroke="#3a3a3a" stroke-width="3"/>
+        <ellipse cx="60" cy="22" rx="18" ry="13" fill="#3a3a3a"/>
+        <ellipse cx="120" cy="38" rx="14" ry="11" fill="#3a3a3a"/>
+        <path d="M160 18 q18 10 8 36" stroke="#3a3a3a" stroke-width="3" fill="none"/>
+        <ellipse cx="95" cy="62" rx="12" ry="7" fill="#f4b6c2"/>
+        <g transform="translate(-20 -18)">
+          <ellipse cx="22" cy="10" rx="9" ry="5" fill="#3a3a3a" transform="rotate(-25 22 10)"/>
+          <ellipse cx="58" cy="10" rx="9" ry="5" fill="#3a3a3a" transform="rotate(25 58 10)"/>
+          <rect x="18" y="4" width="44" height="52" rx="20" fill="#fff" stroke="#3a3a3a" stroke-width="3"/>
+          <ellipse cx="40" cy="46" rx="20" ry="12" fill="#f4b6c2"/>
+          <circle cx="32" cy="46" r="3" fill="#3a3a3a"/><circle cx="48" cy="46" r="3" fill="#3a3a3a"/>
+          <circle cx="31" cy="24" r="3.5" fill="#3a3a3a"/><circle cx="49" cy="24" r="3.5" fill="#3a3a3a"/>
+        </g>
+      </g>
+      <!-- milk can -->
+      <g transform="translate(300 190)">
+        <rect x="0" y="20" width="44" height="58" rx="8" fill="#dfe6ea" stroke="#8a9aa3" stroke-width="2"/>
+        <rect x="8" y="4" width="28" height="20" rx="4" fill="#dfe6ea" stroke="#8a9aa3" stroke-width="2"/>
+        <rect x="4" y="40" width="36" height="14" fill="#2f6b3a"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<!-- ============ WHY OUR MILK ============ -->
+<section class="alt" id="why">
+  <div class="wrap">
+    <h2 data-t="whyTitle">Why our milk?</h2>
+    <p class="sub" data-t="whySub">We are a small family farm. We care for every cow ourselves, so we know exactly what goes into your milk.</p>
+    <div class="grid">
+      <div class="card"><div class="icon">💧</div><h3 data-t="w1t">No water added</h3><p data-t="w1p">100% pure milk. We never mix water.</p></div>
+      <div class="card"><div class="icon">🌿</div><h3 data-t="w2t">No chemicals</h3><p data-t="w2p">No preservatives, no powder, nothing artificial.</p></div>
+      <div class="card"><div class="icon">🐄</div><h3 data-t="w3t">Our own 5 cows</h3><p data-t="w3p">Healthy cows, cared for by our family every day.</p></div>
+      <div class="card"><div class="icon">🚚</div><h3 data-t="w4t">Home delivery</h3><p data-t="w4p">Fresh milk brought to your door in Muzaffarabad.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICE ============ -->
+<section id="price">
+  <div class="wrap">
+    <h2 data-t="priceTitle">Fresh cow milk</h2>
+    <p class="sub" data-t="priceSub">Simple and honest pricing.</p>
+    <div class="price-box">
+      <div class="amount"><span data-t="currency">Rs.</span> <span class="js-price">280</span></div>
+      <div class="per" data-t="perLitre">per litre</div>
+      <ul>
+        <li data-t="p1">Delivered fresh every day</li>
+        <li data-t="p2">Morning or evening delivery</li>
+        <li data-t="p3">Daily or monthly order</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER FORM ============ -->
+<section class="alt" id="order">
+  <div class="wrap">
+    <h2 data-t="orderTitle">Order milk</h2>
+    <p class="sub" data-t="orderSub">Fill this in and press the button. It will open WhatsApp with your order ready to send.</p>
+    <form id="orderForm">
+      <div>
+        <label for="fName" data-t="fName">Your name</label>
+        <input id="fName" required>
+      </div>
+      <div>
+        <label for="fLitres" data-t="fLitres">How many litres per day?</label>
+        <select id="fLitres">
+          <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+        </select>
+      </div>
+      <div>
+        <label for="fTime" data-t="fTime">Delivery time</label>
+        <select id="fTime">
+          <option value="morning" data-t="morning">Morning</option>
+          <option value="evening" data-t="evening">Evening</option>
+        </select>
+      </div>
+      <div>
+        <label for="fAddress" data-t="fAddress">Your address</label>
+        <textarea id="fAddress" rows="3" required></textarea>
+      </div>
+      <button class="btn btn-wa" type="submit">💬 <span data-t="fSend">Send order on WhatsApp</span></button>
+      <p class="note" data-t="fNote">We will reply to confirm your order.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER / CONTACT ============ -->
+<footer>
+  <div class="wrap">
+    <h3 data-t="farmName">Kashmir Dairy</h3>
+    <p>📍 <span data-t="address">Muzaffarabad, Azad Kashmir</span></p>
+    <p>📞 <a class="js-call js-phone-text" href="#"></a></p>
+    <p class="small">© <span id="year"></span> <span data-t="farmName">Kashmir Dairy</span></p>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a class="float-wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.5.7 4.8 2 6.8L3 29l6.8-2.2c1.9 1 4 1.6 6.2 1.6 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.2c-2 0-3.9-.6-5.5-1.6l-.4-.2-4 1.3 1.3-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.7C5.4 9.8 10.2 5 16 5s10.6 4.8 10.6 10.6S21.8 26.2 16 26.2zm5.8-7.9c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.7-2.2s0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.3 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+  /* =========================================================
+     FARM DETAILS — change these and the whole site updates
+     ========================================================= */
+  const FARM = {
+    phoneDisplay: "0300-0000000",   // how the number looks on the page
+    whatsapp:     "923000000000",   // same number: 92 + number without the first 0, no dashes
+    price:        "280"             // price per litre
+  };
+
+  /* ---------- Words in both languages ---------- */
+  const T = {
+    en: {
+      farmName: "Kashmir Dairy",
+      badge: "🏡 Family farm · Muzaffarabad",
+      heroTitle: "Pure cow milk, delivered to your door",
+      heroText: "Fresh milk from our own 5 cows. No water. No chemicals. Just pure, natural milk — the way it should be.",
+      btnWa: "Order on WhatsApp", btnCall: "Call us",
+      whyTitle: "Why our milk?",
+      whySub: "We are a small family farm. We care for every cow ourselves, so we know exactly what goes into your milk.",
+      w1t: "No water added", w1p: "100% pure milk. We never mix water.",
+      w2t: "No chemicals", w2p: "No preservatives, no powder, nothing artificial.",
+      w3t: "Our own 5 cows", w3p: "Healthy cows, cared for by our family every day.",
+      w4t: "Home delivery", w4p: "Fresh milk brought to your door in Muzaffarabad.",
+      priceTitle: "Fresh cow milk", priceSub: "Simple and honest pricing.",
+      currency: "Rs.", perLitre: "per litre",
+      p1: "Delivered fresh every day", p2: "Morning or evening delivery", p3: "Daily or monthly order",
+      orderTitle: "Order milk",
+      orderSub: "Fill this in and press the button. It will open WhatsApp with your order ready to send.",
+      fName: "Your name", fLitres: "How many litres per day?", fTime: "Delivery time",
+      morning: "Morning", evening: "Evening", fAddress: "Your address",
+      fSend: "Send order on WhatsApp", fNote: "We will reply to confirm your order.",
+      address: "Muzaffarabad, Azad Kashmir",
+      waHello: "Assalam o Alaikum! I would like to order milk.",
+      msg: (n,l,t,a) => `Assalam o Alaikum! I would like to order milk.\n\nName: ${n}\nLitres per day: ${l}\nDelivery time: ${t}\nAddress: ${a}`,
+      switchTo: "اردو"
+    },
+    ur: {
+      farmName: "کشمیر ڈیری",
+      badge: "🏡 خاندانی فارم · مظفرآباد",
+      heroTitle: "خالص گائے کا دودھ، آپ کے دروازے تک",
+      heroText: "ہماری اپنی 5 گائیوں کا تازہ دودھ۔ نہ پانی، نہ کیمیکل۔ صرف خالص اور قدرتی دودھ۔",
+      btnWa: "واٹس ایپ پر آرڈر کریں", btnCall: "کال کریں",
+      whyTitle: "ہمارا دودھ کیوں؟",
+      whySub: "ہم ایک چھوٹا خاندانی فارم ہیں۔ ہم ہر گائے کی دیکھ بھال خود کرتے ہیں، اس لیے ہمیں معلوم ہے کہ آپ کے دودھ میں کیا ہے۔",
+      w1t: "پانی کی ملاوٹ نہیں", w1p: "سو فیصد خالص دودھ۔ ہم کبھی پانی نہیں ملاتے۔",
+      w2t: "کوئی کیمیکل نہیں", w2p: "نہ پاؤڈر، نہ کوئی مصنوعی چیز۔",
+      w3t: "ہماری اپنی 5 گائیں", w3p: "صحت مند گائیں، جن کی ہمارا خاندان روز دیکھ بھال کرتا ہے۔",
+      w4t: "گھر تک ڈیلیوری", w4p: "مظفرآباد میں تازہ دودھ آپ کے دروازے تک۔",
+      priceTitle: "تازہ گائے کا دودھ", priceSub: "سادہ اور ایماندار قیمت۔",
+      currency: "روپے", perLitre: "فی لیٹر",
+      p1: "روزانہ تازہ ڈیلیوری", p2: "صبح یا شام ڈیلیوری", p3: "روزانہ یا ماہانہ آرڈر",
+      orderTitle: "دودھ آرڈر کریں",
+      orderSub: "یہ فارم بھریں اور بٹن دبائیں۔ واٹس ایپ آپ کے آرڈر کے ساتھ کھل جائے گا۔",
+      fName: "آپ کا نام", fLitres: "روزانہ کتنے لیٹر؟", fTime: "ڈیلیوری کا وقت",
+      morning: "صبح", evening: "شام", fAddress: "آپ کا پتہ",
+      fSend: "واٹس ایپ پر آرڈر بھیجیں", fNote: "ہم آرڈر کی تصدیق کے لیے جواب دیں گے۔",
+      address: "مظفرآباد، آزاد کشمیر",
+      waHello: "السلام علیکم! میں دودھ آرڈر کرنا چاہتا/چاہتی ہوں۔",
+      msg: (n,l,t,a) => `السلام علیکم! میں دودھ آرڈر کرنا چاہتا/چاہتی ہوں۔\n\nنام: ${n}\nروزانہ لیٹر: ${l}\nڈیلیوری کا وقت: ${t}\nپتہ: ${a}`,
+      switchTo: "English"
+    }
+  };
+
+  let lang = "en";
+  try { lang = localStorage.getItem("lang") || "en"; } catch (e) {}
+
+  function waLink(text) {
+    return "https://wa.me/" + FARM.whatsapp + "?text=" + encodeURIComponent(text);
+  }
+
+  function applyLang() {
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ur" ? "rtl" : "ltr";
+    document.body.classList.toggle("ur", lang === "ur");
+    document.querySelectorAll("[data-t]").forEach(el => {
+      const v = t[el.dataset.t];
+      if (typeof v === "string") el.textContent = v;
+    });
+    document.getElementById("langBtn").textContent = t.switchTo;
+    document.querySelectorAll(".js-wa").forEach(a => a.href = waLink(t.waHello));
+  }
+
+  document.getElementById("langBtn").addEventListener("click", () => {
+    lang = lang === "en" ? "ur" : "en";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    applyLang();
+  });
+
+  document.querySelectorAll(".js-call").forEach(a => a.href = "tel:+" + FARM.whatsapp);
+  document.querySelectorAll(".js-phone-text").forEach(a => a.textContent = FARM.phoneDisplay);
+  document.querySelectorAll(".js-price").forEach(s => s.textContent = FARM.price);
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("orderForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const t = T[lang];
+    const timeSel = document.getElementById("fTime");
+    const text = t.msg(
+      document.getElementById("fName").value.trim(),
+      document.getElementById("fLitres").value,
+      timeSel.options[timeSel.selectedIndex].text,
+      document.getElementById("fAddress").value.trim()
+    );
+    window.open(waLink(text), "_blank");
+  });
+
+  applyLang();
+</script>
+</body>
+</html>
